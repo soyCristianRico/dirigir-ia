@@ -42,7 +42,7 @@ Ficheros de referencia, no skills. Se cargan con `Read` a media tarea, nunca de 
 
 ## Procesos
 
-Los procesos de mis tareas están en `procesos/`, uno por fichero `.md`, con el índice en `procesos/indice.md`. Antes de hacer una tarea, mira si hay un proceso y síguelo. Para crear uno usa `plantillas/proceso.md` y pregúntame lo que falte, de una en una.
+Los procesos de mis tareas están en `procesos/`, uno por fichero `.md`, con el índice en `procesos/indice.md`. Antes de hacer una tarea, mira si hay un proceso y síguelo. Para crear uno usa `plantillas/proceso.md` y pregúntame lo que falte, de una en una. Después de crear o cambiar un proceso, actualiza el visor con `python3 procesos/generar_visor.py`, que genera `procesos/visor.html`.
 
 ## Workspace
 

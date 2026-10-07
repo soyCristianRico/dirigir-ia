@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mis procesos</title>
+<style>
+:root{--bg:#faf9f6;--panel:#fff;--tx:#1a2233;--mut:#667085;--line:#e6e4de;--ac:#2b52d9;--acbg:#eef2ff}
+@media (prefers-color-scheme:dark){:root{--bg:#141a26;--panel:#1b2332;--tx:#e8ecf4;--mut:#9aa6bd;--line:#2a3447;--ac:#8fa8ff;--acbg:#243055}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+aside{background:var(--panel);border-right:1px solid var(--line);padding:20px;position:sticky;top:0;height:100vh;overflow:auto}
+h1.t{font-size:18px;margin:0 0 12px}
+input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.g{margin:18px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.i{display:block;padding:8px 10px;border-radius:8px;color:var(--tx);text-decoration:none;cursor:pointer;font-size:15px}
+.i:hover{background:var(--acbg)}
+.i.on{background:var(--acbg);color:var(--ac);font-weight:600}
+.vacio{color:var(--mut);font-size:14px;padding:6px 10px}
+main{padding:40px 48px;max-width:860px}
+main h1{font-size:30px;margin-top:0}main h2{margin-top:32px;font-size:21px}main h3{font-size:17px}
+code{background:var(--acbg);padding:2px 6px;border-radius:5px;font-size:.92em}
+pre{background:var(--panel);border:1px solid var(--line);padding:14px;border-radius:8px;overflow:auto}pre code{background:none;padding:0}
+blockquote{margin:16px 0;padding:10px 16px;border-left:3px solid var(--ac);background:var(--acbg);border-radius:0 8px 8px 0}
+table{border-collapse:collapse;width:100%;margin:16px 0}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{background:var(--acbg)}
+a{color:var(--ac)}hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.pie{margin-top:48px;color:var(--mut);font-size:13px}
+@media (max-width:760px){.app{grid-template-columns:1fr}aside{position:static;height:auto}main{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+<h1 class="t">Mis procesos</h1>
+<input id="q" type="search" placeholder="Buscar en los procesos…" autocomplete="off">
+<div id="lista"></div>
+</aside>
+<main id="doc"></main>
+</div>
+<script>
+const DOCS = [{"id": "que-es", "titulo": "Qué es un proceso", "grupo": "Empieza aquí", "md": "# Qué es un proceso\n\nUn proceso, o SOP (procedimiento operativo estándar), es un documento con el saber hacer, el paso a paso y todo lo necesario para realizar una tarea que se repite. Así no depende solo de la cabeza de quien la hace hoy.\n\nSe documenta cualquier tarea recurrente. Por ejemplo, el informe mensual de un cliente, dar de alta a un cliente nuevo o responder un tipo de correo.\n\n## Reglas\n\n- Todo proceso sigue la misma plantilla, `plantillas/proceso.md`. Mismas secciones, mismo orden.\n- Todo proceso tiene su fila en el índice, `procesos/indice.md`.\n- Nunca un nombre propio en el \"Quién\". Un rol, no una persona.\n- Lo lee igual una persona que una IA. Escríbelo para alguien que nunca ha hecho la tarea.\n\n## Cómo se crea con Claude\n\n1. Cuéntale a Claude la tarea. Explícala hablando o pégale una transcripción de cómo la haces hoy.\n2. Claude te hace las preguntas que falten, de una en una, antes de escribir nada.\n3. Redacta el proceso con la plantilla y te lo enseña.\n4. Con tu visto bueno, lo guarda en `procesos/` y añade su fila en el índice.\n5. Actualiza el visor, para que puedas verlo en el navegador.\n\n## Cómo verlos\n\nAbre `procesos/visor.html` con doble clic. Se abre en tu navegador y puedes buscar entre todos tus procesos. Si has añadido o cambiado alguno, pídele a Claude que actualice el visor, o ejecuta `python3 procesos/generar_visor.py`.\n\n## Para trabajar con más gente\n\nSi quieres que otras personas los vean y los comenten, copia los procesos a un Drive o a Google Docs.\n"}, {"id": "plantilla", "titulo": "Plantilla de proceso", "grupo": "Empieza aquí", "md": "# Proceso: [nombre de la tarea]\n\n> No lo rellenes a mano. Cuéntale a Claude cómo haces esta tarea, hablando o pegando una transcripción, y pídele que te pregunte lo que falte. Cuando lo tenga, que lo escriba aquí.\n> Está pensado para que lo lea igual una persona que una IA.\n\n## Objetivo\n\n1-2 frases. Qué se consigue con este proceso.\n\n**Quién.** Quién lo ejecuta. Un rol, no un nombre propio.\n\n**Qué.** Qué se hace, en una frase.\n\n**Cuándo.** Cada cuánto, o qué lo dispara.\n\n**Dónde.** En qué herramientas.\n\n**Por qué.** Qué pasa si no se hace o se hace mal.\n\n## Herramientas y sistemas\n\n- Herramienta 1\n- Herramienta 2\n\n## Definiciones\n\n- **Término.** Qué significa. Solo si hace falta para entender el proceso.\n\n## Proceso\n\n1. Paso concreto, en forma de acción.\n2. Paso concreto.\n3. Paso concreto.\n\n## Información de apoyo\n\nEjemplos largos, capturas o tablas que no hace falta mirar cada vez que se hace el proceso.\n\n## Detalles del documento\n\n**Creado.**\n\n**Última actualización.**\n\n## Versiones\n\n- [fecha] Creación del documento\n"}];
+const FECHA = "07/10/2026 21:14";
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g,"<code>$1</code>");
+  s = s.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>");
+  s = s.replace(/(^|[^*])\*([^*\s][^*]*)\*/g,"$1<em>$2</em>");
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return s;
+}
+function render(md){
+  const L = md.replace(/\r/g,"").split("\n"); let h = "", i = 0;
+  const esTabla = n => /^\s*\|.*\|\s*$/.test(L[n]||"");
+  while(i < L.length){
+    const l = L[i]; let m;
+    if(/^```/.test(l)){ const c=[]; i++; while(i<L.length && !/^```/.test(L[i])){c.push(L[i]); i++} i++; h += "<pre><code>"+esc(c.join("\n"))+"</code></pre>"; continue; }
+    if((m = l.match(/^(#{1,6})\s+(.*)$/))){ h += "<h"+m[1].length+">"+inline(m[2])+"</h"+m[1].length+">"; i++; continue; }
+    if(/^\s*---+\s*$/.test(l)){ h += "<hr>"; i++; continue; }
+    if(/^>/.test(l)){ const q=[]; while(i<L.length && /^>/.test(L[i])){q.push(L[i].replace(/^>\s?/,"")); i++} h += "<blockquote>"+inline(q.join(" "))+"</blockquote>"; continue; }
+    if(/^\s*[-*]\s+/.test(l)){ h+="<ul>"; while(i<L.length && /^\s*[-*]\s+/.test(L[i])){ h+="<li>"+inline(L[i].replace(/^\s*[-*]\s+/,""))+"</li>"; i++ } h+="</ul>"; continue; }
+    if(/^\s*\d+\.\s+/.test(l)){ h+="<ol>"; while(i<L.length && /^\s*\d+\.\s+/.test(L[i])){ h+="<li>"+inline(L[i].replace(/^\s*\d+\.\s+/,""))+"</li>"; i++ } h+="</ol>"; continue; }
+    if(esTabla(i) && /^\s*\|?\s*:?-{2,}/.test(L[i+1]||"")){
+      const cel = r => r.trim().replace(/^\||\|$/g,"").split("|").map(x=>inline(x.trim()));
+      h += "<table><thead><tr>"+cel(L[i]).map(x=>"<th>"+x+"</th>").join("")+"</tr></thead><tbody>"; i += 2;
+      while(i<L.length && esTabla(i)){ h += "<tr>"+cel(L[i]).map(x=>"<td>"+x+"</td>").join("")+"</tr>"; i++ }
+      h += "</tbody></table>"; continue;
+    }
+    if(l.trim()===""){ i++; continue; }
+    const p=[l]; i++;
+    while(i<L.length && L[i].trim()!=="" && !/^(#{1,6}\s|```|>|\s*[-*]\s|\s*\d+\.\s|\s*\|)/.test(L[i])){ p.push(L[i]); i++ }
+    h += "<p>"+inline(p.join(" "))+"</p>";
+  }
+  return h;
+}
+const $lista = document.getElementById("lista"), $doc = document.getElementById("doc"), $q = document.getElementById("q");
+let actual = (location.hash||"").slice(1) || (DOCS[0] && DOCS[0].id);
+function pintaLista(){
+  const t = $q.value.trim().toLowerCase();
+  const ok = DOCS.filter(d => !t || (d.titulo+" "+d.md).toLowerCase().includes(t));
+  let h = "";
+  for(const g of ["Empieza aquí","Tus procesos"]){
+    const del = ok.filter(d => d.grupo===g);
+    h += '<div class="g">'+g+"</div>";
+    if(!del.length){ h += '<div class="vacio">'+(g==="Tus procesos" && !t ? "Todavía no hay ninguno. Pídele a Claude que documente el primero." : "Sin resultados.")+"</div>"; continue; }
+    h += del.map(d => '<a class="i'+(d.id===actual?" on":"")+'" href="#'+d.id+'">'+esc(d.titulo)+"</a>").join("");
+  }
+  $lista.innerHTML = h;
+}
+function pintaDoc(){
+  const d = DOCS.find(x => x.id===actual) || DOCS[0];
+  $doc.innerHTML = d ? render(d.md)+'<div class="pie">Visor generado el '+FECHA+". Ejecuta procesos/generar_visor.py para actualizarlo.</div>" : "<p>No hay nada que mostrar todavía.</p>";
+}
+function todo(){ pintaLista(); pintaDoc(); }
+window.addEventListener("hashchange", () => { actual = location.hash.slice(1); todo(); window.scrollTo(0,0); });
+$q.addEventListener("input", pintaLista);
+todo();
+</script>
+</body>
+</html>

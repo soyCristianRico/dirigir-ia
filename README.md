@@ -26,7 +26,7 @@ Puedes contestarle hablando en vez de escribiendo. Va más rápido.
 ```
 CLAUDE.md             tus instrucciones para Claude, corto y a rellenar
 plantillas/proceso.md   plantilla para documentar una tarea
-procesos/             tus procesos, uno por fichero, con su índice. Esta carpeta sí se sube a GitHub
+procesos/             tus procesos, uno por fichero, con su índice y un visor para verlos en el navegador. Esta carpeta sí se sube a GitHub
 .claude/mecanicas/    ficheros de referencia que Claude carga solo cuando hacen falta
 .claude/skills/       aquí irán tus skills, de momento vacía
 workspace/            tu carpeta de trabajo. Su contenido no se sube a GitHub
@@ -43,6 +43,8 @@ Para crear uno no lo rellenes a mano. Pega esto en Claude:
 ```
 Quiero documentar una tarea que hago. Te la cuento y tú me haces las preguntas que falten, de una en una. Cuando lo tengas, escríbelo en procesos/ con la plantilla de plantillas/proceso.md y añádelo a procesos/indice.md.
 ```
+
+Para verlos, abre `procesos/visor.html` con doble clic. Se abre en tu navegador, con un buscador y una explicación de qué es un proceso. Cuando añadas o cambies uno, pídele a Claude que actualice el visor, o ejecuta `python3 procesos/generar_visor.py`.
 
 Si quieres trabajar con otras personas, copia los procesos a un Drive o a Google Docs para que los vean y los comenten.
 
