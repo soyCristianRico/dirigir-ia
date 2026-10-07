@@ -40,6 +40,10 @@ Ficheros de referencia, no skills. Se cargan con `Read` a media tarea, nunca de 
 | `.claude/mecanicas/orca-browser.md` | Cualquier página web. Es el navegador del entorno. |
 | `.claude/mecanicas/computer-use.md` | Una app de escritorio, o una ventana de navegador fuera de Orca. |
 
+## Procesos
+
+Los procesos de mis tareas están en `procesos/`, uno por fichero `.md`, con el índice en `procesos/indice.md`. Antes de hacer una tarea, mira si hay un proceso y síguelo. Para crear uno usa `plantillas/proceso.md` y pregúntame lo que falte, de una en una.
+
 ## Workspace
 
 `workspace/` es mi carpeta de trabajo. La estructura se sube a Git, el contenido no.
