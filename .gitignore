@@ -1,0 +1,12 @@
+# Secretos y configuración local de cada persona
+.mcp.json
+.mcp.json.bak
+.env
+*.bak
+tmp/
+.idea/
+.DS_Store
+
+# Contenido de trabajo: la estructura se sube, el contenido no
+workspace/*
+!workspace/.gitkeep
