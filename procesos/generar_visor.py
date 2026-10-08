@@ -25,7 +25,7 @@ def leer(ruta):
 def titulo(md, por_defecto):
     for linea in md.splitlines():
         if linea.startswith("# "):
-            return linea[2:].strip()
+            return re.sub(r"^proceso\s*:\s*", "", linea[2:].strip(), flags=re.I)
     return por_defecto
 
 
@@ -65,8 +65,8 @@ PLANTILLA = r"""<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mis procesos</title>
 <style>
-:root{--bg:#faf9f6;--panel:#fff;--tx:#1a2233;--mut:#667085;--line:#e6e4de;--ac:#2b52d9;--acbg:#eef2ff}
-@media (prefers-color-scheme:dark){:root{--bg:#141a26;--panel:#1b2332;--tx:#e8ecf4;--mut:#9aa6bd;--line:#2a3447;--ac:#8fa8ff;--acbg:#243055}}
+:root{--bg:#fafafa;--panel:#fff;--tx:#1a1a1a;--mut:#6b6b6b;--line:#e5e5e5;--ac:#1a1a1a;--acbg:#f1f1f1}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--panel:#1a1a1a;--tx:#ededed;--mut:#9a9a9a;--line:#2c2c2c;--ac:#ededed;--acbg:#262626}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 .app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
@@ -84,7 +84,7 @@ code{background:var(--acbg);padding:2px 6px;border-radius:5px;font-size:.92em}
 pre{background:var(--panel);border:1px solid var(--line);padding:14px;border-radius:8px;overflow:auto}pre code{background:none;padding:0}
 blockquote{margin:16px 0;padding:10px 16px;border-left:3px solid var(--ac);background:var(--acbg);border-radius:0 8px 8px 0}
 table{border-collapse:collapse;width:100%;margin:16px 0}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{background:var(--acbg)}
-a{color:var(--ac)}hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+a{color:var(--tx);text-decoration:underline}hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 .pie{margin-top:48px;color:var(--mut);font-size:13px}
 @media (max-width:760px){.app{grid-template-columns:1fr}aside{position:static;height:auto}main{padding:24px 20px}}
 </style>

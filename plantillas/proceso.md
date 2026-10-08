@@ -1,4 +1,4 @@
-# Proceso: [nombre de la tarea]
+# [Nombre de la tarea]
 
 > No lo rellenes a mano. Cuéntale a Claude cómo haces esta tarea, hablando o pegando una transcripción, y pídele que te pregunte lo que falte. Cuando lo tenga, que lo escriba aquí.
 > Está pensado para que lo lea igual una persona que una IA.
